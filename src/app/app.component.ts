@@ -15,7 +15,7 @@ export class AppComponent{
 languages:string[]=["Node JS","Angular JS", "C#", "Java"]
 LanguageValidation:boolean=false;
 employeeModel= new Employee(null,'',false,'','',null ,'');
-
+errorMessage:string;
 FirstToUpper(value:string){
    
      value= value.trim();
@@ -51,7 +51,10 @@ validateLanguage(event){
         if(this.LanguageValidation){
             return;
         }
-       this._formPoster.postEmployeeForm(this.employeeModel);
+       this._formPoster.postEmployeeForm(this.employeeModel)
+       .subscribe(data=>alert(data),
+        error=>this.errorMessage =<any>error);
+       
     }
 }
 
