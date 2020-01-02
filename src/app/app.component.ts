@@ -12,9 +12,16 @@ import { NgForm } from '@angular/forms';
 
 
 export class AppComponent{
-languages:string[]=["Node JS","Angular JS", "C#", "Java"]
+languages:any[]=[
+   {id:1, name:"Node JS"},
+   {id:1, name:"Angular"},
+   {id:1, name:"Java script"},
+   {id:1, name:"C#"},
+   {id:1, name:"Java"}
+  
+]
 LanguageValidation:boolean=false;
-employeeModel= new Employee(null,'',false,'','',null ,'');
+employeeModel= new Employee(null,'',false,'','-1',null ,'','','','');
 errorMessage:string;
 FirstToUpper(value:string){
    
@@ -37,8 +44,8 @@ constructor(private _formPoster:formPosterService){
 }
 
 validateLanguage(event){
-      
-        if(this.employeeModel.codeLang==="default"){
+    
+        if(this.employeeModel.codeLang==="-1"){
             this.LanguageValidation=true;
         }
         else{
@@ -47,7 +54,7 @@ validateLanguage(event){
     }
  
     submitForm(form:NgForm){
-
+        alert(form);
         if(this.LanguageValidation){
             return;
         }
